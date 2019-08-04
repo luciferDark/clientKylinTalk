@@ -104,16 +104,18 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     @Override
     public void onClick(View view) {
         ViewHolder viewHolder = (ViewHolder) view.getTag(R.id.tag_recycler_adapter_holder);
-        if (adapterListener != null){
-            adapterListener.onItemClick(viewHolder, viewHolder.mData);
+        if (this.adapterListener != null){
+            int pos = viewHolder.getAdapterPosition();
+            this.adapterListener.onItemClick(viewHolder, mDataList.get(pos));
         }
     }
 
     @Override
     public boolean onLongClick(View view) {
         ViewHolder viewHolder = (ViewHolder) view.getTag(R.id.tag_recycler_adapter_holder);
-        if (adapterListener != null){
-            adapterListener.onItemLongClick(viewHolder, viewHolder.mData);
+        if (this.adapterListener != null){
+            int pos = viewHolder.getAdapterPosition();
+            this.adapterListener.onItemLongClick(viewHolder, mDataList.get(pos));
         }
         return false;
     }
