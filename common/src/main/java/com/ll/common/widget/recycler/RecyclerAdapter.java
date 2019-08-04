@@ -33,16 +33,16 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     }
 
     public RecyclerAdapter() {
-        this((List<Data>) null);
+        this(null);
     }
 
     public RecyclerAdapter(List<Data> mDataList) {
         this(mDataList, null);
     }
 
-    public RecyclerAdapter(AdapterListener adapterListener) {
-        this(new ArrayList<Data>(), null);
-    }
+    //    public RecyclerAdapter(AdapterListener adapterListener) {
+    //        this(new ArrayList<Data>(), null);
+    //    }
 
     public RecyclerAdapter(List<Data> mDataList, AdapterListener adapterListener) {
         this.mDataList = mDataList;
