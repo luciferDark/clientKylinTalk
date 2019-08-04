@@ -24,11 +24,28 @@ import butterknife.Unbinder;
  * 封装RecyclerAdpater
  */
 public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder<Data>>
-        implements View.OnClickListener, View.OnLongClickListener, AdapterCallback<Data>{
-    private final List<Data> mDataList = new ArrayList<>();//View对应的数据集合
+        implements View.OnClickListener, View.OnLongClickListener, AdapterCallback<Data> {
+    private final List<Data> mDataList;//View对应的数据集合
     private AdapterListener adapterListener = null;
 
     public void setAdapterListener(AdapterListener adapterListener) {
+        this.adapterListener = adapterListener;
+    }
+
+    public RecyclerAdapter() {
+        this((List<Data>) null);
+    }
+
+    public RecyclerAdapter(List<Data> mDataList) {
+        this(mDataList, null);
+    }
+
+    public RecyclerAdapter(AdapterListener adapterListener) {
+        this(new ArrayList<Data>(), null);
+    }
+
+    public RecyclerAdapter(List<Data> mDataList, AdapterListener adapterListener) {
+        this.mDataList = mDataList;
         this.adapterListener = adapterListener;
     }
 
@@ -61,6 +78,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     /**
      * 创建ViewHolder回调
+     *
      * @param root
      * @param viewType
      * @return
@@ -94,6 +112,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     /**
      * 获取布局类型
+     *
      * @param position
      * @param data
      * @return xml的一个id
@@ -104,7 +123,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     @Override
     public void onClick(View view) {
         ViewHolder viewHolder = (ViewHolder) view.getTag(R.id.tag_recycler_adapter_holder);
-        if (this.adapterListener != null){
+        if (this.adapterListener != null) {
             int pos = viewHolder.getAdapterPosition();
             this.adapterListener.onItemClick(viewHolder, mDataList.get(pos));
         }
@@ -113,7 +132,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     @Override
     public boolean onLongClick(View view) {
         ViewHolder viewHolder = (ViewHolder) view.getTag(R.id.tag_recycler_adapter_holder);
-        if (this.adapterListener != null){
+        if (this.adapterListener != null) {
             int pos = viewHolder.getAdapterPosition();
             this.adapterListener.onItemLongClick(viewHolder, mDataList.get(pos));
         }
@@ -122,10 +141,12 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     /**
      * VIewItem  点击和长按事件接口
+     *
      * @param <Data>
      */
-    public interface AdapterListener<Data>{
+    public interface AdapterListener<Data> {
         void onItemClick(ViewHolder holder, Data data);
+
         void onItemLongClick(ViewHolder holder, Data data);
     }
 
@@ -133,22 +154,24 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     /*********************数据操作封装*********************/
     /**
      * 插入单条数据
+     *
      * @param data
      */
-    public void addData(Data data){
+    public void addData(Data data) {
         mDataList.add(data);
         notifyItemChanged(mDataList.size() - 1);
     }
 
     /**
      * 插入数据集合
+     *
      * @param dataList
      */
-    public void addData(Data... dataList){
-        if (mDataList == null){
+    public void addData(Data... dataList) {
+        if (mDataList == null) {
             return;
         }
-        if (dataList != null && dataList.length > 0){
+        if (dataList != null && dataList.length > 0) {
             int startPosition = mDataList.size();
             Collections.addAll(mDataList, dataList);
 
@@ -158,13 +181,14 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     /**
      * 插入数据集合
+     *
      * @param dataList
      */
-    public void addData(Collection<Data> dataList){
-        if (mDataList == null){
+    public void addData(Collection<Data> dataList) {
+        if (mDataList == null) {
             return;
         }
-        if (dataList != null && dataList.size() > 0){
+        if (dataList != null && dataList.size() > 0) {
             int startPosition = mDataList.size();
             mDataList.addAll(dataList);
             notifyItemRangeChanged(startPosition, dataList.size());
@@ -174,8 +198,8 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
     /**
      * 清理数据集合
      */
-    public void clearData(){
-        if (mDataList == null){
+    public void clearData() {
+        if (mDataList == null) {
             return;
         }
         mDataList.clear();
@@ -184,19 +208,21 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
 
     /**
      * 整体替换数据集合
+     *
      * @param dataList
      */
-    public void modifyData(Collection<Data> dataList){
-        if (mDataList == null){
+    public void modifyData(Collection<Data> dataList) {
+        if (mDataList == null) {
             return;
         }
-        if (dataList == null || dataList.size() <= 0){
+        if (dataList == null || dataList.size() <= 0) {
             return;
         }
         mDataList.clear();
         mDataList.addAll(dataList);
         notifyDataSetChanged();
     }
+
     /*********************数据操作封装*********************/
 
     public static abstract class ViewHolder<Data> extends RecyclerView.ViewHolder {
@@ -232,7 +258,7 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
          * @param data
          */
         public void updateData(Data data) {
-            if (this.adapterCallback != null){
+            if (this.adapterCallback != null) {
                 this.adapterCallback.update(data, this);
             }
         }
