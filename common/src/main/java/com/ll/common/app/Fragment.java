@@ -9,8 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 public abstract class Fragment extends androidx.fragment.app.Fragment {
-    protected  View mRootView;
+    protected View mRootView;
+    protected Unbinder mRootUnbinder;
 
     @Override
     public void onAttach(Context context) {
@@ -21,15 +25,15 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (mRootView == null){
+        if (mRootView == null) {
             int _layoutId = getContentLayoutId();
-            View view = inflater.inflate(_layoutId,container, false);
+            View view = inflater.inflate(_layoutId, container, false);
             mRootView = view;
             initWidget(mRootView);
         } else {
-            if (mRootView.getParent()!= null){
+            if (mRootView.getParent() != null) {
                 // 移除其父控件
-                ((ViewGroup)(mRootView.getParent())).removeView(mRootView);
+                ((ViewGroup) (mRootView.getParent())).removeView(mRootView);
             }
         }
 
@@ -52,6 +56,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
 
     /**
      * 初始化参数是否正确
+     *
      * @param bundle
      */
     protected void initArgs(Bundle bundle) {
@@ -68,7 +73,7 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
      * 初始化控件
      */
     protected void initWidget(View view) {
-
+        mRootUnbinder = ButterKnife.bind(this, view);
     }
 
     /**
@@ -80,9 +85,10 @@ public abstract class Fragment extends androidx.fragment.app.Fragment {
 
     /**
      * 处理返回键逻辑
+     *
      * @return true 标识拦截返回键处理，false 不拦截
      */
-    public boolean onBackPressed(){
-        return  false;
+    public boolean onBackPressed() {
+        return false;
     }
 }

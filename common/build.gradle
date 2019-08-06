@@ -11,14 +11,20 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         flavorDimensions "code"
+        javaCompileOptions {
+            annotationProcessorOptions
+                    {
+                        includeCompileClasspath = true
+                    }
+        }
     }
+
+
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-        applicationVariants {
         }
     }
 
@@ -26,15 +32,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.13-beta-3'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.androidxConstraintlayout"
     implementation "androidx.appcompat:appcompat:$rootProject.ext.androidxAppCompatVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.androidxSupportVersion"
     //    butterKnife插件
-    implementation("com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion")
-            { exclude module: 'support-compat' }
-    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    api("com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion")
+//            { exclude module: 'support-compat' }
+    api "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    api "com.google.guava:guava:$rootProject.ext.guavaVersion"
+    api "com.google.auto:auto-common:$rootProject.ext.autoCommonVersion"
 }

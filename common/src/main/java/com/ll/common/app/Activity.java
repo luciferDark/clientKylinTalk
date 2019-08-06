@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 
 /**
  * @author kylin
@@ -57,7 +59,7 @@ public abstract class Activity extends AppCompatActivity {
      * 初始化控件
      */
     protected void initWidget() {
-
+        ButterKnife.bind(this);
     }
 
     /**

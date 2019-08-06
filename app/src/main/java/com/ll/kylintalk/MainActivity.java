@@ -1,14 +1,30 @@
 package com.ll.kylintalk;
 
-import android.os.Bundle;
+import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.ll.common.app.Activity;
 
-public class MainActivity extends AppCompatActivity {
+import butterknife.BindView;
+
+
+public class MainActivity extends Activity {
+    @BindView(R.id.textTest)
+    TextView textTest;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getContentLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initWidget() {
+        super.initWidget();
+
+        textTest.setText("测试ButterKnife");
+    }
+
+    @Override
+    protected void initData() {
+        super.initData();
     }
 }
