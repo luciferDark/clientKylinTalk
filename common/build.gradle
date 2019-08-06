@@ -36,6 +36,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.androidxConstraintlayout"
     implementation "androidx.appcompat:appcompat:$rootProject.ext.androidxAppCompatVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.androidxSupportVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxRecyclerviewVersion"
     //    butterKnife插件
     api("com.jakewharton:butterknife:$rootProject.ext.butterKnifeVersion")
 //            { exclude module: 'support-compat' }

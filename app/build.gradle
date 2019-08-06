@@ -48,6 +48,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.androidxConstraintlayout"
     implementation "androidx.appcompat:appcompat:$rootProject.ext.androidxAppCompatVersion"
     implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.androidxSupportVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxRecyclerviewVersion"
 
     implementation project(path: ':common')
 }
