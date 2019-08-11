@@ -6,8 +6,8 @@
     <dimen name="protraitMaxSize">@dimen/len_64</dimen>
     <!--状态栏高度-->
     <dimen name="statusBarSize">25dp</dimen>
-
+    <!--标题和状态栏高度和-->
     <dimen name="actionBarWithStatusBarSize">73dp</dimen>
-
+    <!--名字字体大小-->
     <dimen name="fontNameSize">15sp</dimen>
 </resources>
