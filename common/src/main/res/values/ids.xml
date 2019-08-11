@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--viewHolder 设置tag使用的类型-->
-    <item name="tag_recycler_adapter_holder" type="id"/>
+    <item name="tag_recycler_adapter_holder" type="id" />
+    <!--默认头像drawable名称-->
+    <item name="src_default_portrait" type="drawable" />
 </resources>
