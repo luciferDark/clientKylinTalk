@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import net.qiujuer.genius.ui.widget.FloatActionButton;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
