@@ -51,4 +51,5 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$rootProject.ext.androidxRecyclerviewVersion"
 
     implementation project(path: ':common')
+    implementation project(path: ':lang')
 }
