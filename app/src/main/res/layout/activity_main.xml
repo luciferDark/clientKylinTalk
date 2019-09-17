@@ -40,8 +40,7 @@
                 android:contentDescription="@string/app_name"
                 android:padding="@dimen/len_10"
                 android:scaleType="centerInside"
-                android:src="@drawable/src_search_icon"
-                android:tint="?attr/toolbarMenuIconColor" />
+                android:src="@drawable/src_search_icon" />
         </FrameLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
