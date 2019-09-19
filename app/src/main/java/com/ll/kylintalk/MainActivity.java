@@ -71,6 +71,7 @@ public class MainActivity extends Activity
     protected void initData() {
         super.initData();
         Menu menu = mNavigationView.getMenu();
+        mNavigationView.setSelectedItemId(R.id.action_home);
         menu.performIdentifierAction(R.id.action_home, 0);//初始化初次点击事件
     }
 
