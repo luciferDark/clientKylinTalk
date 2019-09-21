@@ -11,6 +11,6 @@ public class GroupFragment extends Fragment {
 
     @Override
     protected int getContentLayoutId() {
-        return R.layout.fragment_active;
+        return R.layout.fragment_group;
     }
 }

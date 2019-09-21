@@ -14,6 +14,8 @@ import com.ll.common.app.Activity;
 import com.ll.common.app.Util.Logger;
 import com.ll.kylintalk.helper.NavHelper;
 import com.ll.kylintalk.main.ActiveFragment;
+import com.ll.kylintalk.main.ContactFragment;
+import com.ll.kylintalk.main.GroupFragment;
 
 import net.qiujuer.genius.ui.Ui;
 import net.qiujuer.genius.ui.widget.FloatActionButton;
@@ -61,9 +63,9 @@ public class MainActivity extends Activity
         mNavHelper.add(R.id.action_home,
                 new NavHelper.Tab<>(ActiveFragment.class, R.string.title_home))
                 .add(R.id.action_group,
-                        new NavHelper.Tab<>(ActiveFragment.class, R.string.title_group))
+                        new NavHelper.Tab<>(GroupFragment.class, R.string.title_group))
                 .add(R.id.action_contact,
-                        new NavHelper.Tab<>(ActiveFragment.class, R.string.title_contact));
+                        new NavHelper.Tab<>(ContactFragment.class, R.string.title_contact));
         mNavigationView.setOnNavigationItemSelectedListener(MainActivity.this);
     }
 
@@ -95,7 +97,7 @@ public class MainActivity extends Activity
         float rotation = 0;
 
         if (Objects.equals(newTab.extra, R.string.title_home)) {
-            transY = Ui.dipToPx(getResources(), 76);
+            transY = Ui.dipToPx(getResources(), 120);
         } else if (Objects.equals(newTab.extra, R.string.title_group)) {
             mActionButton.setImageResource(R.drawable.src_group_icon);
             rotation = -360;
@@ -107,7 +109,7 @@ public class MainActivity extends Activity
         mActionButton.animate()
                 .rotation(rotation)
                 .translationY(transY)
-                .setDuration(480)
+                .setDuration(800)
                 .setInterpolator(new AnticipateOvershootInterpolator(1))
                 .start();
     }
