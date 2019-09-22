@@ -110,6 +110,17 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         return getItemViewType(position, mDataList.get(position));
     }
 
+    @Override
+    public void update(Data data, ViewHolder<Data> holder) {
+        int pos = holder.getAdapterPosition();
+        if (pos >= 0 && mDataList != null){
+            mDataList.remove(pos);
+
+            mDataList.add(pos,data);
+            notifyItemChanged(pos);
+        }
+    }
+
     /**
      * 获取布局类型
      *
@@ -148,6 +159,23 @@ public abstract class RecyclerAdapter<Data> extends RecyclerView.Adapter<Recycle
         void onItemClick(ViewHolder holder, Data data);
 
         void onItemLongClick(ViewHolder holder, Data data);
+    }
+
+    /**
+     * 添加接口实现类
+     * @param <Data>
+     */
+    public static class AdapterListenerImpl<Data> implements AdapterListener<Data>{
+
+        @Override
+        public void onItemClick(ViewHolder holder, Data data) {
+
+        }
+
+        @Override
+        public void onItemLongClick(ViewHolder holder, Data data) {
+
+        }
     }
 
     /*********************事件点击处理*********************/
